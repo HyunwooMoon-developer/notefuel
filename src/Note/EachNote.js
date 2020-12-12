@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-//import PropTypes from 'prop-types';
 import MyContext from '../Context/MyContext'
 
 class EachNote extends Component {
@@ -20,16 +19,5 @@ class EachNote extends Component {
         );
     }
 }
-/*EachNote.propTypes = {
-    id: PropTypes
-    .string
-    .isRequired,
-    modified: PropTypes
-    .string
-    .isRequired,
-    name : PropTypes
-    .string
-    .isRequired,
-}
-*/
+
 export default EachNote;

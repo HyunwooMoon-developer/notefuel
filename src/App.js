@@ -18,41 +18,8 @@ state ={
   notes : []
 }
 
-  getFolder =() =>{
-    const url = 'http://localhost:3000/';
-  fetch(url)
-  .then(res=>{
-    if(!res.ok){
-      throw new Error('Something went wrong, try it again')
-    }
-    return res.json();
-  })
-  .then(data=>{
-    this.setState({folders: data})
-  })
-  .catch(e=>{
-    console.log(e)
-  })
-}
-
-  getNote= ()=>{
-  fetch(`http://localhost:3000/`)
-  .then(res=>{
-    if(!res.ok){
-      throw new Error('Something went wrong, try it again')
-    }
-    return res.json();
-  })
-  .then(data =>{
-    this.setState({notes: data})
-  })
-  .catch(e=>{
-    console.log(e)
-  })
-}
   componentDidMount(){
-    this.getNote();
-    this.getFolder();
+
     setTimeout(()=>this.setState(Store), 600);
   }
 
