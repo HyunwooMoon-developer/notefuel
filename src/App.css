@@ -1,0 +1,35 @@
+.app{
+  
+  display: grid;
+  grid-template-columns: 20% 1fr;
+  grid-template-rows: 100px 1fr 100px;
+  height: 100%;
+  grid-template-areas: "header header" "sidebar main" "footer footer";
+  min-height: 100vh
+}
+
+.app-header{
+  text-align: center;
+  grid-area: header;
+  background-color: rgb(6, 6, 63);
+}
+
+.app-header a{
+  color: white;
+}
+
+.app-nav{
+  border: 1px solid black;
+  grid-area : sidebar;
+}
+
+.app-main{
+  border: 1px solid black;
+  grid-area : main;
+}
+
+.app-footer{
+  border: 1px solid black;
+  grid-area : footer;
+  text-align: center;
+}
