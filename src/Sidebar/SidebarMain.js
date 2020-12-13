@@ -19,7 +19,9 @@ class SidebarMain extends React.Component{
         <div>
             {folderLists}
             <div>
+                <Link to="/add-folder">
                 <button>Add Folder</button>
+                </Link>
             </div>
         </div>
       )

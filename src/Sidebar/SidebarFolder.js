@@ -20,7 +20,7 @@ class SidebarFolder extends Component {
         return (
             <div>
                 {folderLists}
-                <Link to={'/'}>
+                <Link to={'/add-folder'}>
                 <button>Add folder</button>
                 </Link>
             </div>

@@ -12,6 +12,8 @@ import NoteListMain from './Note/NoteListMain';
 import NoteFolder from './Note/NoteFolder';
 import NoteNote from './Note/NoteNote';
 import config from './config';
+import AddFolder from './AddItem/AddFolder';
+import AddNote from './AddItem/AddNote';
 
 class App extends React.Component{
 state ={
@@ -64,6 +66,12 @@ handleDeleteItem= noteId =>{
   })
 }
 
+addFolder = folder =>{
+  this.setState({
+    folder : [...this.state.folders, folder],
+  })
+}
+
   componentDidMount(){
 
     setTimeout(()=>this.setState(Store), 600);
@@ -74,6 +82,7 @@ handleDeleteItem= noteId =>{
       folders : this.state.folders,
       notes: this.state.notes,
       deleteNote : this.handleDeleteNote,
+      addFolder : this.addFolder,
       
     }
 
@@ -85,15 +94,16 @@ handleDeleteItem= noteId =>{
         <MyContext.Provider value={value}>
         <nav className="app-nav">
           <Route exact path='/' component={SidebarMain} />
-          <Route path='/folder/:folderId' component={SidebarFolder}/>
-          <Route path='/note/:noteId' component={SidebarNote}/>
+          <Route path='/folder/:folderId' component={SidebarFolder} />
+          <Route path='/note/:noteId' component={SidebarNote} />
+          <Route path='/add-folder' component={AddFolder} />
         </nav>
         <main className="app-main"> 
         <Switch>
-          <Route exact path='/' component={NoteListMain}/>
-          <Route path="/folder/:folderId" component={NoteFolder}/>
-          <Route path="/note/:noteId" component={NoteNote}/>
-          <Route />
+          <Route exact path='/' component={NoteListMain} />
+          <Route path="/folder/:folderId" component={NoteFolder} />
+          <Route path='/note/:noteId' component={NoteNote} />
+          <Route path='/add-note' component={AddNote} />
         </Switch>
         </main>
         </MyContext.Provider>

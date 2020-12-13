@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MyContext from '../Context/MyContext';
-import NoteNoteTop from './NoteNoteTop';
+import EachNote from './EachNote';
 
 
 class NoteNote extends Component {
@@ -12,12 +12,13 @@ class NoteNote extends Component {
         }) ||{id: ''}
         return (
             <div>
-                <NoteNoteTop 
+                <EachNote
                     key={Note.id}
                     id={Note.id}
                     name={Note.name}
                     modified={Note.modified}
                     folderId={this.folderId}
+                    
                 />
                 <p>{Note.content}</p>
             </div>
