@@ -11,11 +11,57 @@ import MyContext from './Context/MyContext';
 import NoteListMain from './Note/NoteListMain';
 import NoteFolder from './Note/NoteFolder';
 import NoteNote from './Note/NoteNote';
+import config from './config';
 
 class App extends React.Component{
 state ={
   folders : [],
   notes : []
+}
+
+FolderData(){
+  fetch(`${config.url}/folders`)
+  .then(res=>{
+    if(!res.ok){
+      res.json().then(error=>{
+        throw error
+      })
+    }
+    return res.json()
+  })
+  .then(data=>{
+    this.setState({
+      folders: data
+    })
+  .catch(e =>{
+    console.log(e)
+  })
+  })
+}
+
+NoteData(){
+  fetch(`${config.url}/notes`)
+  .then(res=>{
+    if(!res.ok){
+      return res.json().then(error=>
+        {throw error})
+    }
+  return res.json();
+  })
+  .then(data=>{
+    this.setState({
+      notes: data
+    })
+  })
+  .catch(e=>{
+    console.log(e);
+  })
+}
+
+handleDeleteItem= noteId =>{
+  this.setState({
+    notes :this.state.notes.filter(note=> note.id !== noteId)
+  })
 }
 
   componentDidMount(){
@@ -27,6 +73,7 @@ state ={
     const value={
       folders : this.state.folders,
       notes: this.state.notes,
+      deleteNote : this.handleDeleteNote,
       
     }
 

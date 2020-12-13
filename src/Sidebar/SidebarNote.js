@@ -12,7 +12,7 @@ class SidebarNote extends Component {
         })|| {folderId: this.props.match.params.noteId}
         const Folder = folders.find(folder =>{
             return folder.id === Note.folderId
-        })
+        })||{name : ''}
         return (
             <div>
                 <Link to={"/"}>
