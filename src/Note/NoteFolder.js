@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import EachNote from './EachNote';
 import MyContext from '../Context/MyContext';
+import ErrorBoundary from '../Context/ErrorBoundary';
 
 
 class NoteFolder extends Component {
@@ -23,10 +24,12 @@ class NoteFolder extends Component {
         })
         return (
             <div>
+                <ErrorBoundary>
                 {noteLists}
-                <Link to={'/'}>
-                    <button>add note2</button>
-                    </Link>      
+                <Link to={'/add-note'}>
+                    <button>Add</button>
+                    </Link>    
+                </ErrorBoundary>      
             </div>
         );
     }

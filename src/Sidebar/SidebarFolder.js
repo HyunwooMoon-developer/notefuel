@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {NavLink, Link} from 'react-router-dom';
+import ErrorBoundary from '../Context/ErrorBoundary';
 import MyContext from '../Context/MyContext';
+import './Sidebar.css';
 
 
 class SidebarFolder extends Component {
@@ -9,20 +11,24 @@ class SidebarFolder extends Component {
         const {folders} = this.context
         const folderLists = folders.map(folder =>{
             return(
-                <div key={folder.id}>
+                <li key={folder.id}>
                     <NavLink to={`/folder/${folder.id}`}
                             activeClassName='selected'>
                         {folder.name}
                     </NavLink>
-                </div>
+                </li>
             )
         })
         return (
-            <div>
+            <div className="folderNav">
+                <ErrorBoundary>
+                <ul className="folderList">
                 {folderLists}
+                </ul>
                 <Link to={'/add-folder'}>
-                <button>Add folder</button>
+                <button>Add</button>
                 </Link>
+                </ErrorBoundary>
             </div>
         );
     }

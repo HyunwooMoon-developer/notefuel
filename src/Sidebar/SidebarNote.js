@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MyContext from '../Context/MyContext';
 import {Link} from 'react-router-dom';
+import ErrorBoundary from '../Context/ErrorBoundary';
 
 class SidebarNote extends Component {
     static contextType = MyContext;
@@ -15,12 +16,14 @@ class SidebarNote extends Component {
         })||{name : ''}
         return (
             <div>
+                <ErrorBoundary>
                 <Link to={"/"}>
                 <button>Back</button>
                 </Link>
             <div>
                 <p>{Folder.name}</p>
             </div>
+            </ErrorBoundary>
             </div>
         );
     }

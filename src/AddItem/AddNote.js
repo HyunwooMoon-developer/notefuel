@@ -15,8 +15,8 @@ class AddNote extends Component {
         const newNote = {
             name: e.target['note-name'].value,
             content: e.target['note-content'].value,
-            folderId : e.target['note-folder-id'].value,
             modified : new Date(),
+            folderId : e.target['note-folder-id'].value,
         }
         fetch(`${config.url}/notes` , {
             method: 'POST',
@@ -32,6 +32,7 @@ class AddNote extends Component {
             return res.json();
         })
         .then(note=>{
+           // console.log(note)
             this.context.addNote(note);
             this.props.history.push(`/folder/${note.folderId}`)
         })
@@ -41,26 +42,40 @@ class AddNote extends Component {
 
     }
 
+    handleClickCancel = () =>{
+        this.props.history.push('/');
+    }
+
+
     render() {
         const {folders} =this.context ;
-        const optionList = folders.map(folder=> <option key={folder.id} value="folder.id">{folder.name}</option>)
+        const optionList = folders.map(folder=> <option key={folder.id} value={folder.id}>{folder.name}</option>)
         return (
-            <div>
+            <div className="add-note">
                 <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="note-name">Name</label>
+                    <div className="note-field">
+                    <label htmlFor="note-name" className="label">Name</label>
+                    <br />
                     <input type="text" name="note-name" id="note-name" placeholder='add new note' required >
                     </input>
+                    </div>
+                    <div className="note-field">
+                    <label htmlFor="note-content" className="label">Content</label>
                     <br />
-                    <label htmlFor="note-content">Content</label>
                     <textarea id="note-content" name="note-content" />
-                    <br>
-                    </br>
+                    </div>
+                    <div className="note-field">
                     <select id="note-folder-id" name="note-folder-id">
                         <option value="null">...</option>
                         {optionList}
                     </select>
-                    <br />
+                    </div>
+                    <div className="note-field">
                     <button type="submit">save</button>
+                    <button type="button" onClick={this.handleClickCancel}>
+                        Cancel
+                    </button>
+                    </div>
                 </form>
             </div>
         );

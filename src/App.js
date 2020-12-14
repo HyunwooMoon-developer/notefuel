@@ -41,9 +41,10 @@ FolderData(){
     this.setState({
       folders: data
     })
-  .catch(e =>{
-    console.log(e)
   })
+    .catch(e =>{
+    console.log(e)
+ 
   })
 }
 
@@ -78,21 +79,25 @@ handleDeleteItem= noteId =>{
 }
 
 handleAddFolder = folder =>{
-  console.log('in handleadd folder')
+  //console.log('in handleadd folder')
+  console.log(folder)
   this.setState({
     folders : [...this.state.folders, folder],
   })
 }
 
 handleAddNote = note => {
+  console.log(note);
   this.setState({
     notes : [...this.state.notes, note],
   })
 }
 
   componentDidMount(){
-    setTimeout(()=>this.setState(Store), 600);
-  }
+   //setTimeout(()=>this.setState(Store), 100);
+   this.FolderData();
+   this.NoteData();
+ }
 
   render(){
     const value={
@@ -125,7 +130,7 @@ handleAddNote = note => {
         </Switch>
         </main>
         <footer className="app-footer">
-            <p>present by Moon</p>
+            <h3>present by Moon</h3>
         </footer>
         </MyContext.Provider>
       </div>

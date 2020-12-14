@@ -1,0 +1,13 @@
+.each-note{
+    border: 1px solid black;
+}
+
+.note-list a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+
+.delete-button{
+    float: right;
+}

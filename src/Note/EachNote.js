@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import MyContext from '../Context/MyContext'
 import config from '../config';
+import './Note.css';
 
 
 
@@ -41,12 +42,12 @@ class EachNote extends Component {
         const date= new Date(this.props.modified);
         const formatDate = `${date.getFullYear()}/${date.getMonth()}/${date.getDate()}`
         return (
-            <div>
+            <div className="each-note">
                 <Link to={`/note/${this.props.id}`}>
                 <p>{this.props.name}</p>
                 </Link>
+                <button type="button" onClick={this.handleClickDelete} className="delete-button">Delete</button>
                 <p>Modified : {formatDate}</p>
-                <button type="button" onClick={this.handleClickDelete}>Delete</button>
             </div>
         );
     }

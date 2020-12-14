@@ -1,3 +1,7 @@
+*{
+  box-sizing: border-box;
+}
+
 .app{
   
   display: grid;
@@ -5,31 +9,60 @@
   grid-template-rows: 100px 1fr 100px;
   height: 100%;
   grid-template-areas: "header header" "sidebar main" "footer footer";
-  min-height: 100vh
+  min-height: 100vh;
 }
 
 .app-header{
   text-align: center;
   grid-area: header;
-  background-color: rgb(6, 6, 63);
+  background-color: rgb(8, 174, 240);
 }
 
 .app-header a{
+  font-size: 50px;
+  color: white;
+  text-decoration: none;
+}
+.app-header a:visited {
+  color: white;
+}
+.app-header a:hover {
   color: white;
 }
 
+
+
 .app-nav{
   border: 1px solid black;
+  background-color: skyblue;
   grid-area : sidebar;
+  height : 100vh;
+  overflow: auto;
 }
 
 .app-main{
   border: 1px solid black;
   grid-area : main;
+  background-color: rgb(170, 231, 255);
+  height: 100vh;
+  overflow: auto;
 }
 
 .app-footer{
   border: 1px solid black;
   grid-area : footer;
   text-align: center;
+  background-color: rgb(8, 174, 240);
+  color: white
+}
+
+button{
+  border: 1px solid black; 
+  color: black;
+  font-weight: bold;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  width: 70px;
+  margin-left: 10px ;
 }

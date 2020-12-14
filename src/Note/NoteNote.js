@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ErrorBoundary from '../Context/ErrorBoundary';
 import MyContext from '../Context/MyContext';
 import EachNote from './EachNote';
 
@@ -12,15 +13,17 @@ class NoteNote extends Component {
         }) ||{id: ''}
         return (
             <div>
+                <ErrorBoundary>
                 <EachNote
                     key={Note.id}
                     id={Note.id}
                     name={Note.name}
                     modified={Note.modified}
-                    folderId={this.folderId}
+                    folderId={Note.folderId}
                     
                 />
                 <p>{Note.content}</p>
+                </ErrorBoundary>
             </div>
         );
     }
