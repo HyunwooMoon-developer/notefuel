@@ -7,6 +7,10 @@ import {Link} from 'react-router-dom'
 class NoteListMain extends Component {
     static contextType= MyContext;
 
+    handleDeleteNote = noteId =>{
+        this.props.history.push('/')
+    }
+
     render() {
     const {notes} = this.context;
     const noteList = notes.map(note =>{
@@ -18,6 +22,7 @@ class NoteListMain extends Component {
                 content={note.content}
                 name={note.name}
                 modified={note.modified}
+                onDeleteNote = {this.handleDeleteNote}
             />
         )
     });
@@ -25,7 +30,7 @@ class NoteListMain extends Component {
     return (
             <div>
                 {noteList}
-                <Link to={'/'}>
+                <Link to={'/add-note'}>
                     <button>add note</button>
                 </Link>
             </div>

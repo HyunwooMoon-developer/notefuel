@@ -3,14 +3,19 @@ import MyContext from '../Context/MyContext'
 import config from '../config';
 
 class AddFolder extends Component {
-    static contextType=MyContext;
+    static defaultProps={
+        history:{
+            push: () =>{}
+        }
+    }
+
+    static contextType = MyContext;
 
     handleSubmit = e => {
         e.preventDefault();
       
-        const {newFolder} = e.target
-        const folders = {
-            folder : newFolder.value,
+        const folder={
+            name: e.target['folder-name'].value
         }
 
         fetch(`${config.url}/folders`,{
@@ -18,7 +23,7 @@ class AddFolder extends Component {
             headers :{
                 'Content-Type' : 'application/json'
             },
-            body: JSON.stringify({folders})
+            body: JSON.stringify({folder})
         })
         .then(res=>{
             if(!res.ok){
@@ -27,9 +32,10 @@ class AddFolder extends Component {
             return res.json();
         })
         .then(data=>{
-            newFolder.value = '';
-            this.context.AddFolder(data);
-            this.props.history.push('/');
+            console.log(data)
+            console.log(this.context)
+            this.context.addFolder(data.folder);
+            this.props.history.push(`/folder/${folder.id}`);
         })
         .catch(e=>{
             console.log(e);
@@ -45,10 +51,10 @@ class AddFolder extends Component {
             <div>
                 <h1>Add Folder</h1>
                 <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="newFolder">
+                    <label htmlFor="folder-name">
                         Add Folder Name
                     </label>
-                    <input text="type" name="newFolder" id="newFolder" placeholder="Name Required" required/>
+                    <input text="type" name="folder-name" id="folder-name" placeholder="Name Required" required/>
                     <button type="submit">Save</button>
                     {' '}
                     <button type="button" onClick={this.handleClickCancel}>

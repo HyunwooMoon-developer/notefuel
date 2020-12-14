@@ -8,24 +8,29 @@ import config from '../config';
 
 class EachNote extends Component {
     static contextType=MyContext
-
+    static defaultProps = {
+        onDeleteNote : () => {}
+    }
     handleClickDelete = e =>{
         e.preventDefault()
         const noteId = this.props.id;
 
         fetch(`${config.url}/notes/${noteId}`,{
-            method : 'DELETE',
-            heaeders : {
-                'Content-Type' : 'application/json'
+            method: 'DELETE',
+            headers: {
+             'content-type': 'application/json'
             }
         })
         .then(res=>{
             if(!res.ok){
                 return res.json().then(error =>{throw error})
             }
+            return res.json();
         })
         .then(()=>{
             this.context.deleteItem(noteId);
+            this.props.onDeleteNote()
+
         })
         .catch(e=>{
             console.log(e);
@@ -41,8 +46,7 @@ class EachNote extends Component {
                 <p>{this.props.name}</p>
                 </Link>
                 <p>Modified : {formatDate}</p>
-                <button type="button" onClick={this.handleClickDelete
-                }>Delete</button>
+                <button type="button" onClick={this.handleClickDelete}>Delete</button>
             </div>
         );
     }
