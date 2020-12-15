@@ -23,7 +23,7 @@ class NoteFolder extends Component {
         />
         })
         return (
-            <div>
+            <div className="note-list">
                 <ErrorBoundary>
                 {noteLists}
                 <Link to={'/add-note'}>

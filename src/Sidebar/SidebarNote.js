@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import MyContext from '../Context/MyContext';
 import {Link} from 'react-router-dom';
 import ErrorBoundary from '../Context/ErrorBoundary';
+import './Sidebar.css';
 
 class SidebarNote extends Component {
     static contextType = MyContext;

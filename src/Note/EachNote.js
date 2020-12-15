@@ -3,15 +3,16 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import MyContext from '../Context/MyContext'
 import config from '../config';
+import PropTypes from 'prop-types'
 import './Note.css';
 
 
 
 class EachNote extends Component {
     static contextType=MyContext
-    static defaultProps = {
+   /* static defaultProps = {
         onDeleteNote : () => {}
-    }
+    }*/
     handleClickDelete = e =>{
         e.preventDefault()
         const noteId = this.props.id;
@@ -30,8 +31,8 @@ class EachNote extends Component {
         })
         .then(()=>{
             this.context.deleteItem(noteId);
-            this.props.onDeleteNote()
-
+           //this.props.onDeleteNote()
+        
         })
         .catch(e=>{
             console.log(e);
@@ -40,7 +41,7 @@ class EachNote extends Component {
     }
     render() {
         const date= new Date(this.props.modified);
-        const formatDate = `${date.getFullYear()}/${date.getMonth()}/${date.getDate()}`
+        const formatDate = `${date.getFullYear()}/${date.getMonth()+1}/${date.getDate()}`
         return (
             <div className="each-note">
                 <Link to={`/note/${this.props.id}`}>
@@ -52,5 +53,15 @@ class EachNote extends Component {
         );
     }
 }
-
+EachNote.propTypes = {
+    id: PropTypes
+        .string
+        .isRequired,
+    modified: PropTypes
+        .string
+        .isRequired,
+    name: PropTypes
+        .string
+        .isRequired,
+    }
 export default EachNote;

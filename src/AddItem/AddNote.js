@@ -66,7 +66,6 @@ class AddNote extends Component {
                     </div>
                     <div className="note-field">
                     <select id="note-folder-id" name="note-folder-id">
-                        <option value="null">...</option>
                         {optionList}
                     </select>
                     </div>
