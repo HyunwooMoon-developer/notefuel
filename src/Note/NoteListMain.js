@@ -4,17 +4,18 @@ import MyContext from '../Context/MyContext'
 import {Link} from 'react-router-dom'
 import ErrorBoundary from '../Context/ErrorBoundary';
 import './Note.css';
-
+import history from '../history';
 
 class NoteListMain extends Component {
     static contextType= MyContext;
 
     handleDeleteNote = () =>{
-        this.props.history.push('/')
+       history.push('/')
     }
 
     render() {
     const {notes} = this.context;
+    
     const noteList = notes.map(note =>{
         return (
             <EachNote 
@@ -36,6 +37,7 @@ class NoteListMain extends Component {
                 <Link to={'/add-note'}>
                     <button>Add</button>
                 </Link>
+                
                 </ErrorBoundary>
             </div>
         );

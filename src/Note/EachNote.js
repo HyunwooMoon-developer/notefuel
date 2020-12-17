@@ -5,22 +5,19 @@ import MyContext from '../Context/MyContext'
 import config from '../config';
 import PropTypes from 'prop-types'
 import './Note.css';
-
+import history from '../history';
 
 
 class EachNote extends Component {
     static contextType=MyContext
-   /* static defaultProps = {
-        onDeleteNote : () => {}
-    }*/
-    handleClickDelete = e =>{
-        e.preventDefault()
+
+    handleClickDelete = () =>{
         const noteId = this.props.id;
 
         fetch(`${config.url}/notes/${noteId}`,{
             method: 'DELETE',
             headers: {
-             'content-type': 'application/json'
+             'Content-Type': 'application/json'
             }
         })
         .then(res=>{
@@ -31,8 +28,9 @@ class EachNote extends Component {
         })
         .then(()=>{
             this.context.deleteItem(noteId);
-           //this.props.onDeleteNote()
-        
+            history.push('/');
+            // noteId.history.push('/');
+           
         })
         .catch(e=>{
             console.log(e);
@@ -40,6 +38,7 @@ class EachNote extends Component {
 
     }
     render() {
+        //console.log(this.props);
         const date= new Date(this.props.modified);
         const formatDate = `${date.getFullYear()}/${date.getMonth()+1}/${date.getDate()}`
         return (
@@ -55,9 +54,6 @@ class EachNote extends Component {
 }
 EachNote.propTypes = {
     id: PropTypes
-        .string
-        .isRequired,
-    modified: PropTypes
         .string
         .isRequired,
     name: PropTypes

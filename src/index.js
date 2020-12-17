@@ -2,14 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {BrowserRouter} from 'react-router-dom'
+import {Router} from 'react-router-dom'
 import Store from './Store'
-
+import history from './history';
 
 ReactDOM.render(
-    <BrowserRouter>
+    <Router history={history}>
     <App Store={Store}/>
-    </BrowserRouter>
+    </Router>
 ,
   document.getElementById('root')
 );
