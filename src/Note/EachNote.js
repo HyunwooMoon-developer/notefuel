@@ -57,7 +57,6 @@ EachNote.propTypes = {
         .string
         .isRequired,
     name: PropTypes
-        .string
-        .isRequired,
+        .string,
     }
 export default EachNote;
