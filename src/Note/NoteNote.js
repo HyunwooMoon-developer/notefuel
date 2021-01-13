@@ -9,16 +9,16 @@ class NoteNote extends Component {
     render() {
         const {notes} = this.context;
       const Note = notes.find(note=>{
-            return note.note_id === note.noteId
-        }) ||{note_id: ''}
+            return note.id === notes.note_id
+        }) 
        
         return (
             <div>
                 <ErrorBoundary>
                 <EachNote
                     key={Note.note_id}
-                    note_id={Note.note_id}
-                    note_name={Note.note_name}
+                    id={Note.note_id}
+                    name={Note.note_name}
                     modified={Note.modified}
                     folder_id={Note.folder_id}
                     

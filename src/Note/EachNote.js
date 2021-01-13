@@ -44,7 +44,7 @@ class EachNote extends Component {
         const formatDate = `${date.getFullYear()}/${date.getMonth()+1}/${date.getDate()}`
         return (
             <div className="each-note">
-                <Link to={`/notes/${this.props.note_id}`}>
+                <Link to={`/notes/${this.props.id}`}>
                 <p>{this.props.name}</p>
                 </Link>
                 <button type="button" onClick={this.handleClickDelete} className="delete-button">Delete</button>
