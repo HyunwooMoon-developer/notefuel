@@ -12,7 +12,8 @@ class EachNote extends Component {
     static contextType=MyContext
 
     handleClickDelete = () =>{
-        const noteId = this.props.note_id;
+        const {notes} = this.context;
+        const noteId = notes.note_id;
 
         fetch(`${config.NOTE_ENDPOINT}/${noteId}`,{
             method: 'DELETE',

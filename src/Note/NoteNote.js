@@ -10,7 +10,7 @@ class NoteNote extends Component {
         const {notes} = this.context;
       const Note = notes.find(note=>{
             return note.id === notes.note_id
-        }) 
+        }) ||{note_id: ''}
        
         return (
             <div>
