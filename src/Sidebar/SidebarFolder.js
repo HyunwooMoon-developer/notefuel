@@ -11,10 +11,10 @@ class SidebarFolder extends Component {
         const {folders} = this.context
         const folderLists = folders.map(folder =>{
             return(
-                <li key={folder.id}>
-                    <NavLink to={`/folder/${folder.id}`}
+                <li key={folder.folder_id}>
+                    <NavLink to={`/folders/${folder.folder_id}`}
                             activeClassName='selected'>
-                        {folder.name}
+                        {folder.folder_name}
                     </NavLink>
                 </li>
             )

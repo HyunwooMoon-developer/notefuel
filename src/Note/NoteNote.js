@@ -8,18 +8,19 @@ class NoteNote extends Component {
     static contextType=MyContext;
     render() {
         const {notes} = this.context;
-        const Note = notes.find(note=>{
-            return note.id === this.props.match.params.noteId
-        }) ||{id: ''}
+      const Note = notes.find(note=>{
+            return note.note_id === note.noteId
+        }) ||{note_id: ''}
+       
         return (
             <div>
                 <ErrorBoundary>
                 <EachNote
-                    key={Note.id}
-                    id={Note.id}
-                    name={Note.name}
+                    key={Note.note_id}
+                    note_id={Note.note_id}
+                    note_name={Note.note_name}
                     modified={Note.modified}
-                    folderId={Note.folderId}
+                    folder_id={Note.folder_id}
                     
                 />
                 <p>{Note.content}</p>

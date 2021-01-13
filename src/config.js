@@ -2,5 +2,6 @@
 
 
 export default {
-    url: 'http://localhost:9090' ,
+   FOLDER_ENDPOINT : `http://localhost:8000/api/folders`,
+   NOTE_ENDPOINT: `http://localhost:8000/api/notes`
 } ;

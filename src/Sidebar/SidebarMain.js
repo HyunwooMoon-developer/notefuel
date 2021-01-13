@@ -16,8 +16,8 @@ class SidebarMain extends React.Component{
 
       const folderLists = folders.map(folder =>{
           return(
-              <li key={folder.id}>
-                  <Link to={`/folder/${folder.id}`}>{folder.name}</Link>
+              <li key={folder.folder_id}>
+                  <Link to={`/folders/${folder.folder_id}`}>{folder.folder_name}</Link>
               </li>
           )
       })

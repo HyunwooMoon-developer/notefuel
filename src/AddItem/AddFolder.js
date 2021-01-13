@@ -16,11 +16,11 @@ class AddFolder extends Component {
         e.preventDefault();
       
         const folder={
-            name: e.target['folder-name'].value,
+            folder_name: e.target['folder-name'].value,
             
         }
 
-        fetch(`${config.url}/folders`,{
+        fetch(config.FOLDER_ENDPOINT,{
             method: 'POST',
             headers :{
                 'Content-Type' : 'application/json'
@@ -38,7 +38,7 @@ class AddFolder extends Component {
           //const newFolder = {id: data.id , name: folder.name} ;
             //console.log(this.context)
             this.context.addFolder(data);
-            this.props.history.push(`/folder/${data.id}`);
+            this.props.history.push(`/folders/${data.folder_id}`);
         })
         .catch(e=>{
             console.log(e);

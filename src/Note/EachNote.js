@@ -12,9 +12,9 @@ class EachNote extends Component {
     static contextType=MyContext
 
     handleClickDelete = () =>{
-        const noteId = this.props.id;
+        const noteId = this.props.note_id;
 
-        fetch(`${config.url}/notes/${noteId}`,{
+        fetch(`${config.NOTE_ENDPOINT}/${noteId}`,{
             method: 'DELETE',
             headers: {
              'Content-Type': 'application/json'
@@ -39,11 +39,12 @@ class EachNote extends Component {
     }
     render() {
         //console.log(this.props);
+
         const date= new Date(this.props.modified);
         const formatDate = `${date.getFullYear()}/${date.getMonth()+1}/${date.getDate()}`
         return (
             <div className="each-note">
-                <Link to={`/note/${this.props.id}`}>
+                <Link to={`/notes/${this.props.note_id}`}>
                 <p>{this.props.name}</p>
                 </Link>
                 <button type="button" onClick={this.handleClickDelete} className="delete-button">Delete</button>
@@ -53,9 +54,6 @@ class EachNote extends Component {
     }
 }
 EachNote.propTypes = {
-    id: PropTypes
-        .string
-        .isRequired,
     name: PropTypes
         .string,
     }

@@ -19,11 +19,11 @@ class NoteListMain extends Component {
     const noteList = notes.map(note =>{
         return (
             <EachNote 
-                key={note.id}
-                id={note.id}
-                folderId={note.folderId}
+                key={note.note_id}
+                id={note.note_id}
+                folderId={note.folder_id}
                 content={note.content}
-                name={note.name}
+                name={note.note_name}
                 modified={note.modified}
                 onDeleteNote = {this.handleDeleteNote}
             />

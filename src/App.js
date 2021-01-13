@@ -23,7 +23,7 @@ state ={
 }
 
 FolderData(){
-  fetch(`${config.url}/folders`,{
+  fetch(`${config.FOLDER_ENDPOINT}`,{
     method: 'GET',
     headers: {
       'content-type': 'application/json'
@@ -49,7 +49,7 @@ FolderData(){
 }
 
 NoteData(){
-  fetch(`${config.url}/notes`,{
+  fetch(`${config.NOTE_ENDPOINT}`,{
     method: 'GET',
     headers: {
       'content-type': 'application/json'
@@ -116,15 +116,15 @@ handleAddNote = note => {
         </header>
         <nav className="app-nav">
           <Route exact path='/' component={SidebarMain} />
-          <Route path='/folder/:folderId' component={SidebarFolder} />
-          <Route path='/note/:noteId' component={SidebarNote} />
+          <Route path='/folders/:folderId' component={SidebarFolder} />
+          <Route path='/notes/:noteId' component={SidebarNote} />
           
         </nav>
         <main className="app-main"> 
         <Switch>
           <Route exact path='/' component={NoteListMain} />
-          <Route path="/folder/:folderId" component={NoteFolder} />
-          <Route path='/note/:noteId' component={NoteNote} />
+          <Route path="/folders/:folderId" component={NoteFolder} />
+          <Route path='/notes/:noteId' component={NoteNote} />
           <Route path='/add-note' component={AddNote} />
           <Route path='/add-folder' component={AddFolder} />
         </Switch>

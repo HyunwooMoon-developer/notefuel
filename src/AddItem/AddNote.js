@@ -13,12 +13,12 @@ class AddNote extends Component {
     handleSubmit = e =>{
         e.preventDefault();
         const newNote = {
-            name: e.target['note-name'].value,
+            note_name: e.target['note-name'].value,
             content: e.target['note-content'].value,
             modified : new Date(),
-            folderId : e.target['note-folder-id'].value,
+            folder_id : e.target['note-folder-id'].value,
         }
-        fetch(`${config.url}/notes` , {
+        fetch(config.NOTE_ENDPOINT , {
             method: 'POST',
             headers :{
                 'Content-Type' : 'application/json'
@@ -34,7 +34,7 @@ class AddNote extends Component {
         .then(note=>{
            // console.log(note)
             this.context.addNote(note);
-            this.props.history.push(`/folder/${note.folderId}`)
+            this.props.history.push(`/folders/${note.folder_id}`)
         })
         .catch(e=>{
             console.log(e);
@@ -49,7 +49,7 @@ class AddNote extends Component {
 
     render() {
         const {folders} =this.context ;
-        const optionList = folders.map(folder=> <option key={folder.id} value={folder.id}>{folder.name}</option>)
+        const optionList = folders.map(folder=> <option key={folder.folder_id} value={folder.folder_id}>{folder.folder_name}</option>)
         return (
             <div className="add-note">
                 <form onSubmit={this.handleSubmit}>

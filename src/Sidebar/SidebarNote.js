@@ -10,10 +10,10 @@ class SidebarNote extends Component {
     render() {
         const {folders,notes} = this.context;
         const Note = notes.find(note=>{
-            return note.id === this.props.match.params.noteId;
+            return note.note_id === this.props.match.params.noteId;
         })|| {folderId: this.props.match.params.noteId}
         const Folder = folders.find(folder =>{
-            return folder.id === Note.folderId
+            return folder.folder_id === Note.folderId
         })||{name : ''}
         return (
             <div>
